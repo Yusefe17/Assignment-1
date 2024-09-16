@@ -101,8 +101,6 @@ thanks: "`r paste(Sys.info()[4:6])`"
 
         : Five Number Summary HS
 
-        [*EXPLAIN EACH VALUE???*]{.underline}
-
         ```{r}
         fivenum(ba)
         ```
@@ -114,9 +112,11 @@ thanks: "`r paste(Sys.info()[4:6])`"
 
         : Five Number Summary BA
 
-        [*EXPLAIN EACH VALUE??*]{.underline}
+        Comparions: As we can see from the five number summaries, the minimum, lower-hinge, median, and upper-hinge, show higher average salaries for university graduates when compared to high school graduates. The maximum wage for both groups is similiar.
 
     b.  What can you say about relative wages of high school and university graduates?
+
+        University students earn higher wages on average compared to high school graduates.
 
     c.  Using Sturges' rule, how many classes would you construct for the `hs` and `ba` wage data (hint - `length()` gives you the length of the vector, `log10()` may also be useful, so something like `round(1+3.3*log10(length(hs)))` might do the trick for the hs data at least)?
 
@@ -152,6 +152,8 @@ thanks: "`r paste(Sys.info()[4:6])`"
         ```
 
     g.  What do these density curves tell us about the distribution of hourly wages for high school versus university graduates?
+
+        The density curve shows that university graduates on average earn higher wages than high school graduates, since the red curve is more shifted to the right. The flatter red curve also shows that there is a higher variability in wages of university graduates. In comparison high school graduates have a more concentrated peak, at around 25, showing that most high school graduates earn around the same wage.
 
 4.  Consider the following data on annual profits (in \$millions of dollars) for all firms in the textbook publishing industry in Canada (ignore the `[1]`, etc., that appear at the beginning of each line; this is simply the way R displays a vector of numbers):
 
@@ -192,15 +194,25 @@ thanks: "`r paste(Sys.info()[4:6])`"
         round(1+3.3*log10(length(profits)))
         ```
 
+        According to Sturges' rules I should create 5 classes.
+
     d.  What are the class widths and class boundaries based on your answers to the previous two questions, using Sturges' rule, the sample minimum as the first lower class boundary, and the sample maximum as the last upper class boundary?
 
-    e.  Complete the table below showing the absolute frequency, relative frequency, cumulative frequency, and cumulative relative frequency for the above data. For this question you will need to do some manual data entry in the table skeleton provided below after you have figured out what the counts are based on your answers to the previous set of questions (for help formatting tables, which can be a bit tricky at first, see this link: [Quarto Table Online Help](https://quarto.org/docs/authoring/tables.html) or try out the RStudio visual editor table capabilities). In particular, you are to use Sturges' rule (above) to obtain the desired number of classes, and use the range of the data (above) when constructing your class boundaries (note that you need to have a blank line between each new row that you add to the table, and the last class must be closed at the right - this question is worth 8 marks).
+        ```{r}
+        (max(profits) - min(profits))/5
+        ```
 
-        | Class       | Absolute Frequency | Relative Frequency | Cumulative Absolute Frequency | Cumulative Relative Frequency |
-        |:------------|:-------------------|:-------------------|:------------------------------|:------------------------------|
-        | \[...,...)  | ...                | ...                | ...                           | ...                           |
-        | \[...,...)  | ...                | ...                | ...                           | ...                           |
-        | \[...,...\] | ...                | ...                | ...                           | ...                           |
+        The class width is 2.986 and the class boundaries are as follows: 3.67, 6.656, 9.642, 12.628, 15.614, 18.6.
+
+        a.  Complete the table below showing the absolute frequency, relative frequency, cumulative frequency, and cumulative relative frequency for the above data. For this question you will need to do some manual data entry in the table skeleton provided below after you have figured out what the counts are based on your answers to the previous set of questions (for help formatting tables, which can be a bit tricky at first, see this link: [Quarto Table Online Help](https://quarto.org/docs/authoring/tables.html) or try out the RStudio visual editor table capabilities). In particular, you are to use Sturges' rule (above) to obtain the desired number of classes, and use the range of the data (above) when constructing your class boundaries (note that you need to have a blank line between each new row that you add to the table, and the last class must be closed at the right - this question is worth 8 marks).
+
+            | Class            | Absolute Frequency | Relative Frequency | Cumulative Absolute Frequency | Cumulative Relative Frequency |
+            |:--------------|:--------------|:--------------|:--------------|:--------------|
+            | \[3.67,6.656)    | 2                  | 0.142857           | 2                             | 0.142857                      |
+            | \[6.656,9.642)   | 3                  | 0.214286           | 5                             | 0.357143                      |
+            | \[9.642,12.628)  | 6                  | 0.428571           | 11                            | 0.785714                      |
+            | \[12.628,15.614) | 0                  | 0.0                | 11                            | 0.785714                      |
+            | \[15.614,18.6)   | 3                  | 0.214286           | 14                            | 1.0                           |
 
 5.  Since we use the *summation operator* ($\Sigma_{i=1}^n$) often in class, let's make sure we understand how to calculate objects that can be expressed succinctly using this operator.
 
