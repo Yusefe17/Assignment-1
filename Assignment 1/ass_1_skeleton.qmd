@@ -14,7 +14,7 @@ thanks: "`r paste(Sys.info()[4:6])`"
 
     a.  Categorical Data
 
-        Categorical, also known as qualitative, data refers to non numeric data. Source: ECON 2B03 Introduction & Chapter 1 Slides
+        Categorical, also known as qualitative, data refers to non numeric data. This data might be nominal in which number value assigned is used to count. Otherwise data might be ordinal in which the values also serve for counting but can also be ranked. Source: ECON 2B03 Introduction & Chapter 1 Slides
 
     b.  Frequency Distribution
 
@@ -218,6 +218,30 @@ thanks: "`r paste(Sys.info()[4:6])`"
 
     a.  Care must be exercised when expanding certain sums and quantities. Let the sample size be $n=3$, and let $X_1=1$, $X_2=-1$, and $X_3=-3$. Demonstrate in R that it is generally not true that $\sum^{n}_{i=1} X^{2}_{i} = \left(\sum^{n}_{i=1} X_{i}\right)^{2}$ using the `sum()` function and exponent operator `^2` applied to the data vector `X` created using `X <- c(1,-1,-3)` (this question is worth 2 marks).
 
+        ```{r}
+        X <- c(1,-1,-3)
+
+        sum(X^2)
+        (sum(X)^2)
+        ```
+
     b.  Using the same data as in the previous question, compute the sample mean $\bar X=\sum_{i=1}^n X_k/n$ then compute the sample standard deviation $\hat\sigma=\sqrt{\sum_{i=1}^n(X_i-\bar X)^2/(n-1)}$ in two ways: longhand (you can use R and use longhand notation, e.g., X\[1\], X\[2\], and X\[3\] or 1, -1, and -3, whichever you prefer), then using R functions such as mean() and sd() (this question is worth 2 marks).
 
+        Sample Mean
+
+        ```{r}
+        sum(X)/length(X)
+        mean(X)
+        ```
+
+        Standard Deviation
+
+        ```{r}
+        sqrt(sum((X-mean(X))^2)/(length(X)-1))
+        sd(X)
+
+        ```
+
     c.  Express $\sum_{i=1}^n K$, where $K$ is a constant (i.e., a number that does not change hence has no subscript $i$), in terms of $n$ and $K$ only (Hint - a constant does not have a subscript as it does not change with $i$, but it is being added/summed, so type out a string of $n$ constants etc.). Then for $K=3$ and $n=5$ determine $\sum_{i=1}^n K$ using your result purely using $n$ and $K$ (i.e., without a summation sign - this question is worth 2 bonus marks, and you do not use R, rather use your powerful sense of logic and type out your answer with an explanation).
+
+        The sum of the constant K is equal to the constant multiplied by the number of obersvation (n).The result would be n\*K. For K=3 and n=5, the resulting sum of n\*K would be 5\*3=15.
